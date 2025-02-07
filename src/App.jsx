@@ -1,92 +1,56 @@
 import React from "react";
 
-const topics = [
+const lessons = [
   {
-    title: "React-JS",
-    description:
-      "React.js (or just React) is a JavaScript library for building user interfaces, mainly for single-page applications (SPAs). It was developed by Facebook (now Meta) and is widely used for creating fast, interactive, and scalable front-end applications.",
+    title: "Introduction to Websites",
+    content:
+      "A website is a collection of web pages that are accessed through a web browser. Websites can be static (simple HTML, CSS) or dynamic (using JavaScript, React, and other frameworks).",
   },
   {
-    title: "Library & Framework",
-    description:
-      "A library is a collection of reusable functions and components that you can call whenever you need them. It gives you flexibility because you control how and when to use it.\n\nA framework provides a complete structure for building applications. Unlike a library, it controls the flow of your code and calls your code when needed.",
-    extra: [
-      {
-        subtitle: "Example of Library",
-        items: [
-          "React.js → A UI library for building user interfaces.",
-          "Axios → For making API requests.",
-          "Lodash → Utility functions for arrays, objects, and strings.",
-          "Framer Motion → For animations.",
-        ],
-      },
-      {
-        subtitle: "Example of Framework",
-        items: [
-          "Next.js → A React framework for full-stack development.",
-          "Angular → A front-end framework for building web apps.",
-          "Django → A backend framework for Python web apps.",
-          "Express.js → A backend framework for Node.js.",
-        ],
-      },
-    ],
+    title: "Types of Websites",
+    content:
+      "- **Static Websites**: Built with HTML and CSS only.\n- **Dynamic Websites**: Use JavaScript, databases, and frameworks like React.\n- **Single Page Applications (SPA)**: Websites that load a single HTML page and dynamically update content without refreshing.",
   },
   {
-    title: "Component-Based Architecture (CBA)",
-    description:
-      "Component-Based Architecture (CBA) is a software design approach where an application is built using reusable, self-contained components. Instead of writing a single long file for UI, you break the UI into smaller, independent pieces called components.",
+    title: "Introduction to JavaScript",
+    content:
+      "JavaScript is a programming language that allows you to create interactive websites. It can manipulate the DOM (Document Object Model) and handle user interactions.\n\nKey JavaScript Concepts:\n- **Variables** (`let`, `const`, `var`)\n- **Functions** (Regular & Arrow functions)\n- **Events** (Click, Hover, Input)\n- **DOM Manipulation** (`document.querySelector`, `document.getElementById`)\n- **ES6 Features** (Template literals, Destructuring, Spread operator)",
   },
   {
-    title: "Virtual DOM (VDOM)",
-    description:
-      "The Virtual DOM (VDOM) is a lightweight copy of the Real DOM (Document Object Model). React uses it to improve performance by minimizing direct updates to the actual DOM.",
+    title: "Introduction to ReactJS",
+    content: "ReactJS is a JavaScript library for building UI components. It helps create fast and scalable web applications.\n\nKey React Concepts:\n- **Components** (Functional & Class components)\n- **JSX (JavaScript XML)**\n- **Props & State**\n- **Event Handling**\n- **Hooks (useState, useEffect)",
   },
   {
-    title: "JSX (JavaScript XML)",
-    description:
-      "JSX (JavaScript XML) is a syntax extension for JavaScript that allows you to write HTML-like code inside JavaScript. It makes writing React components more intuitive and readable.",
+    title: "Setting Up a React Project",
+    content: "1. Install Node.js and npm.\n2. Create a React App:\n\n```bash\nnpx create-react-app my-app\ncd my-app\nnpm start\n```"
+    
   },
   {
-    title: "State Management",
-    description:
-      "State Management in React refers to how data (state) is stored, updated, and shared across components. It helps keep the UI synchronized with the application’s data.",
-  },
-  {
-    title: "React Hooks Forms",
-    description:
-      "React Hooks are built-in functions that allow you to use state and lifecycle features in functional components without needing class components.",
-  },
+    title: "Advanced React Concepts",
+    content: "- **State Management with Hooks**:\n```javascript\nimport React, { useState } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p className='text-lg font-semibold'>Count: {count}</p>\n      <button className='bg-blue-500 text-white px-4 py-2 rounded-lg mt-2' onClick={() => setCount(count + 1)}>Increase</button>\n    </div>\n  );\n}\n\nexport default Counter;\n```\n\n- **React Router for Navigation**:\n```bash\nnpm install react-router-dom\n```"
+    
+  }
 ];
 
-const App = () => {
+export default function LessonPage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-5 flex flex-col items-center">
-      {topics.map((topic, index) => (
-        <div
-          key={index}
-          className="w-full max-w-3xl bg-gray-800 rounded-xl shadow-lg p-6 mb-6 border border-gray-700"
-        >
-          <h1 className="text-2xl md:text-3xl font-bold underline mb-4">
-            {topic.title}
-          </h1>
-          <p className="text-lg md:text-xl leading-relaxed">{topic.description}</p>
-          {topic.extra &&
-            topic.extra.map((section, idx) => (
-              <div key={idx} className="mt-4">
-                <h2 className="text-xl font-semibold underline mb-2">
-                  {section.subtitle}
-                </h2>
-                <ul className="list-disc list-inside space-y-1">
-                  {section.items.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-8">
+      <div className="max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-2xl border border-gray-200">
+        <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-8">
+          React Website Lesson
+        </h1>
+        <div className="space-y-8">
+          {lessons.map((lesson, index) => (
+            <div
+              key={index}
+              className="p-6 border-l-8 border-blue-600 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <h2 className="text-2xl font-bold text-gray-800">{lesson.title}</h2>
+              <p className="text-gray-700 mt-4 leading-relaxed">{lesson.content}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
-};
-
-export default App;
+}
